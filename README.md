@@ -99,12 +99,7 @@ Bu projeye katkıda bulunmak için aşağıdaki adımları izleyebilirsiniz:
     ```
 4. Değişikliklerinizi ana depoya `pull request` olarak gönderin.
 
----
 
-## Lisans
-Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır. Detaylı bilgi için `LICENSE` dosyasını inceleyebilirsiniz.
-
----
 
 ## İletişim
 Proje hakkında sorularınız için bana ulaşabilirsiniz:
