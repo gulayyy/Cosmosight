@@ -1,0 +1,50 @@
+{
+  "analysis_date": "2024-08-24",
+  "total_images_analyzed": 3,
+  "classes_found": [
+    "Nebula",
+    "Galaxy",
+    "Star"
+  ],
+  "class_patterns": {
+    "Nebula": {
+      "count": 1,
+      "avg_star_density": 0.04934630102040816,
+      "avg_brightness": 20.115692761479593,
+      "avg_circularity": 0.376627770497171,
+      "avg_texture_energy": 606.0504629108042,
+      "avg_detected_objects": 8.0,
+      "avg_contrast": 253.0,
+      "common_shape_category": "Düzensiz/Spiral",
+      "common_texture_category": "Orta Detay"
+    },
+    "Galaxy": {
+      "count": 1,
+      "avg_star_density": 0.04918686224489796,
+      "avg_brightness": 14.332011320153061,
+      "avg_circularity": 0.6834740588195859,
+      "avg_texture_energy": 124.93433451045154,
+      "avg_detected_objects": 1.0,
+      "avg_contrast": 188.0,
+      "common_shape_category": "Kısmen Düzenli",
+      "common_texture_category": "Düşük Detay"
+    },
+    "Star": {
+      "count": 1,
+      "avg_star_density": 0.0,
+      "avg_brightness": 114.82967952806122,
+      "avg_circularity": 0.7853981633974483,
+      "avg_texture_energy": 8598.946581369915,
+      "avg_detected_objects": 1.0,
+      "avg_contrast": 242.0,
+      "common_shape_category": "Düzenli/Küresel",
+      "common_texture_category": "Yüksek Detay"
+    }
+  },
+  "key_insights": [
+    "⭐ Yıldız Yoğunluğu: Nebula sınıfında en yüksek (0.049), Star sınıfında en düşük (0.000)",
+    "💡 Parlaklık: Star en parlak (114.8/255), Galaxy en karanlık (14.3/255)",
+    "🔄 Simetri: Star en simetrik (0.785), Nebula en düzensiz (0.377)",
+    "🎨 Doku: Star en karmaşık (8598.9), Galaxy en basit (124.9)"
+  ]
+}

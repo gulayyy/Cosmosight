@@ -1,0 +1,22 @@
+{
+  "image_path": "data/split_dataset/test/Nebula/10002074_large2x_27414cf3.jpeg",
+  "model_prediction": "Nebula",
+  "confidence": 96.0,
+  "brightness_mean": 20.115692761479593,
+  "brightness_std": 22.52126413502999,
+  "contrast_ratio": 253.0,
+  "image_quality": "Medium",
+  "star_density": 0.04934630102040816,
+  "estimated_star_count": 247,
+  "star_category": "Seyrek Yıldız Alanı",
+  "brightness_distribution": "Uniform",
+  "detected_objects": 8,
+  "total_object_area": 5039,
+  "average_circularity": 0.376627770497171,
+  "shape_category": "Düzensiz/Spiral",
+  "complexity": "Low",
+  "texture_energy": 606.0504629108042,
+  "edge_density": 0.09974888392857142,
+  "texture_category": "Orta Detay",
+  "surface_complexity": "Complex"
+}

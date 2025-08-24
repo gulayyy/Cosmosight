@@ -1,0 +1,22 @@
+{
+  "image_path": "data/split_dataset/test/Star/fitscut (10).jpeg",
+  "model_prediction": "Star",
+  "confidence": 89.0,
+  "brightness_mean": 114.82967952806122,
+  "brightness_std": 86.41369070645473,
+  "contrast_ratio": 242.0,
+  "image_quality": "High",
+  "star_density": 0.0,
+  "estimated_star_count": 0,
+  "star_category": "Seyrek Yıldız Alanı",
+  "brightness_distribution": "Varied",
+  "detected_objects": 1,
+  "total_object_area": 49729,
+  "average_circularity": 0.7853981633974483,
+  "shape_category": "Düzenli/Küresel",
+  "complexity": "Low",
+  "texture_energy": 8598.946581369915,
+  "edge_density": 0.09998804209183673,
+  "texture_category": "Yüksek Detay",
+  "surface_complexity": "Complex"
+}

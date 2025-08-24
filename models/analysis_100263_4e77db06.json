@@ -1,0 +1,22 @@
+{
+  "image_path": "data/split_dataset/test/Galaxy/100263_4e77db06.jpg",
+  "model_prediction": "Galaxy",
+  "confidence": 98.0,
+  "brightness_mean": 14.332011320153061,
+  "brightness_std": 27.522951788422535,
+  "contrast_ratio": 188.0,
+  "image_quality": "Medium",
+  "star_density": 0.04918686224489796,
+  "estimated_star_count": 246,
+  "star_category": "Seyrek Yıldız Alanı",
+  "brightness_distribution": "Uniform",
+  "detected_objects": 1,
+  "total_object_area": 3858,
+  "average_circularity": 0.6834740588195859,
+  "shape_category": "Kısmen Düzenli",
+  "complexity": "Low",
+  "texture_energy": 124.93433451045154,
+  "edge_density": 0.09982860331632654,
+  "texture_category": "Düşük Detay",
+  "surface_complexity": "Smooth"
+}
