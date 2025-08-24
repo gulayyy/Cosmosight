@@ -1,0 +1,4 @@
+Sınıf,Örnek Sayısı,Yıldız Yoğunluğu,Ortalama Parlaklık,Simetri Oranı,Doku Karmaşıklığı,Tespit Edilen Nesne,Kontrast Oranı,Baskın Şekil,Baskın Doku
+Nebula,1,0.049,20.1,0.377,606.1,8.0,253,Düzensiz/Spiral,Orta Detay
+Galaxy,1,0.049,14.3,0.683,124.9,1.0,188,Kısmen Düzenli,Düşük Detay
+Star,1,0.000,114.8,0.785,8598.9,1.0,242,Düzenli/Küresel,Yüksek Detay
