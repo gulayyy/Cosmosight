@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Advanced Training Visualization Script
 Creates training graphs for the Astronomy Classification Model
@@ -10,7 +9,7 @@ import os
 import sys
 from datetime import datetime
 
-# Matplotlib style ayarları
+# Matplotlib style settings
 plt.style.use('default')
 plt.rcParams['figure.facecolor'] = 'white'
 plt.rcParams['axes.facecolor'] = 'white'

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 🎯 FOR PRESENTATION: Feature Extraction Comparison Module
 Analyzing inter-class feature patterns and preparing for presentations

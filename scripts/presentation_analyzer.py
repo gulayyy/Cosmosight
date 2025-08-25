@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 🎯 FOR PRESENTATION: Astronomical Image Analysis & Feature Extraction
 Supporting model predictions with scientific analysis module
@@ -23,23 +22,23 @@ class PresentationAnalyzer:
         print(f"🔬 Scientific Analysis: {os.path.basename(image_path)}")
         print("="*50)
         
-        # 1. Görüntü yükleme
+        # 1. Image loading
         img = cv2.imread(image_path)
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         
-        # 2. Temel özellikler
+        # 2. Basic features
         basic_features = self._extract_basic_features(gray)
         
-        # 3. Yıldız analizi
+        # 3. Star analysis
         star_analysis = self._analyze_stars(gray)
         
-        # 4. Şekil analizi
+        # 4. Shape analysis
         shape_analysis = self._analyze_shapes(gray)
         
-        # 5. Doku analizi
+        # 5. Texture analysis
         texture_analysis = self._analyze_texture(gray)
         
-        # 6. Sonuçları birleştir
+        # 6. Combine results
         analysis = {
             'image_path': image_path,
             'model_prediction': model_prediction,
@@ -50,7 +49,7 @@ class PresentationAnalyzer:
             **texture_analysis
         }
         
-        # 7. Sunum raporu oluştur
+        # 7. Create presentation report
         self._generate_presentation_report(analysis, image_path)
         
         return analysis
@@ -131,7 +130,7 @@ class PresentationAnalyzer:
     
     def _analyze_texture(self, gray_image):
         """Texture and structure analysis"""
-        # Gradient analizi
+        # Gradient analysis
         grad_x = cv2.Sobel(gray_image, cv2.CV_64F, 1, 0, ksize=3)
         grad_y = cv2.Sobel(gray_image, cv2.CV_64F, 0, 1, ksize=3)
         gradient_magnitude = np.sqrt(grad_x**2 + grad_y**2)
@@ -192,12 +191,12 @@ class PresentationAnalyzer:
         fig, axes = plt.subplots(2, 2, figsize=(12, 10))
         fig.suptitle(f'🌌 Astronomical Analysis: {os.path.basename(image_path)}', fontsize=16, fontweight='bold')
         
-        # Orijinal görüntü
+        # Original image
         axes[0, 0].imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
         axes[0, 0].set_title(f'Original Image\nPrediction: {analysis.get("model_prediction", "Unknown")}')
         axes[0, 0].axis('off')
         
-        # Parlaklık analizi
+        # Brightness analysis
         axes[0, 1].hist(gray.ravel(), bins=50, alpha=0.7, color='skyblue')
         axes[0, 1].axvline(analysis['brightness_mean'], color='red', linestyle='--', 
                           label=f'Mean: {analysis["brightness_mean"]:.1f}')
@@ -205,14 +204,14 @@ class PresentationAnalyzer:
         axes[0, 1].set_xlabel('Pixel Intensity')
         axes[0, 1].legend()
         
-        # Yıldız yoğunluğu gösterimi
+        # Star density representation
         bright_threshold = np.percentile(gray, 95)
         bright_mask = gray > bright_threshold
         axes[1, 0].imshow(bright_mask, cmap='Reds')
         axes[1, 0].set_title(f'Star Detection\nCount: {analysis["estimated_star_count"]}')
         axes[1, 0].axis('off')
         
-        # Şekil analizi
+        # Shape analysis
         _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
         axes[1, 1].imshow(binary, cmap='gray')
         axes[1, 1].set_title(f'Shape Analysis\nObjects: {analysis["detected_objects"]}')
@@ -220,7 +219,7 @@ class PresentationAnalyzer:
         
         plt.tight_layout()
         
-        # Kaydet
+        # Save
         filename = os.path.basename(image_path).split('.')[0]
         save_path = f"models/presentation_analysis_{filename}.png"
         plt.savefig(save_path, dpi=300, bbox_inches='tight')
@@ -234,7 +233,7 @@ class PresentationAnalyzer:
         print("🎯 STARTING PRESENTATION DEMO...")
         print("="*60)
         
-        # Test görüntüleri
+        # Test images
         test_images = [
             ("data/split_dataset/test/Galaxy/100263_4e77db06.jpg", "Galaxy", 98.0),
             ("data/split_dataset/test/Nebula/10002074_large2x_27414cf3.jpeg", "Nebula", 96.0),

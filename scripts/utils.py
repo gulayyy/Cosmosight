@@ -16,7 +16,7 @@ def calculate_class_weights(generator):
 
 def calculate_class_weights_from_dir(train_dir, class_names):
     """
-    Sınıf ağırlıklarını directory'den hesapla
+    Calculate class weights from directory
     """
     class_counts = {}
     
@@ -28,13 +28,13 @@ def calculate_class_weights_from_dir(train_dir, class_names):
         else:
             class_counts[class_name] = 0
     
-    print("Sınıf dağılımı:")
+    print("Class distribution:")
     total_samples = sum(class_counts.values())
     for class_name, count in class_counts.items():
         percentage = (count / total_samples) * 100
         print(f"  {class_name}: {count} ({percentage:.1f}%)")
     
-    # Class weights hesapla
+    # Calculate class weights
     labels = []
     for i, class_name in enumerate(class_names):
         labels.extend([i] * class_counts[class_name])
@@ -52,9 +52,9 @@ def calculate_class_weights_from_dir(train_dir, class_names):
 
 def analyze_dataset_quality(data_dir, sample_size=50):
     """
-    Dataset kalitesini analiz et
+    Analyze dataset quality
     """
-    print("🔍 Dataset kalite analizi başlıyor...")
+    print("🔍 Starting dataset quality analysis...")
     
     class_stats = {}
     
@@ -63,13 +63,13 @@ def analyze_dataset_quality(data_dir, sample_size=50):
         if not os.path.exists(class_path):
             continue
             
-        print(f"\n📂 {class_name} sınıfı analizi:")
+        print(f"\n📂 {class_name} class analysis:")
         
-        # Dosya listesi
+        # File list
         files = [f for f in os.listdir(class_path) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
         total_files = len(files)
         
-        print(f"  📊 Toplam dosya: {total_files}")
+        print(f"  📊 Total files: {total_files}")
         
         # Sample files for analysis
         sample_files = files[:min(sample_size, total_files)]
@@ -89,9 +89,9 @@ def analyze_dataset_quality(data_dir, sample_size=50):
             widths, heights = zip(*sizes)
             unique_sizes = set(sizes)
             
-            print(f"  📐 Boyut çeşitliliği: {len(unique_sizes)} farklı boyut")
-            print(f"  📏 Ortalama boyut: {np.mean(widths):.0f}x{np.mean(heights):.0f}")
-            print(f"  ⚠️ Bozuk dosya: {corrupted}/{len(sample_files)}")
+            print(f"  📐 Size variety: {len(unique_sizes)} different sizes")
+            print(f"  📏 Average size: {np.mean(widths):.0f}x{np.mean(heights):.0f}")
+            print(f"  ⚠️ Corrupted files: {corrupted}/{len(sample_files)}")
         
         class_stats[class_name] = {
             'total_files': total_files,
@@ -103,7 +103,7 @@ def analyze_dataset_quality(data_dir, sample_size=50):
 
 def create_data_visualization(train_dir, save_path="models/dataset_analysis.png"):
     """
-    Dataset dağılımını görselleştir
+    Visualize dataset distribution
     """
     class_counts = {}
     class_names = ['Galaxy', 'Nebula', 'Star']
@@ -123,9 +123,9 @@ def create_data_visualization(train_dir, save_path="models/dataset_analysis.png"
     colors = ['#FF6B6B', '#4ECDC4', '#45B7D1']
     
     bars = ax1.bar(classes, counts, color=colors)
-    ax1.set_title('Sınıf Dağılımı (Training Set)')
-    ax1.set_ylabel('Örnek Sayısı')
-    ax1.set_xlabel('Sınıflar')
+    ax1.set_title('Class Distribution (Training Set)')
+    ax1.set_ylabel('Number of Samples')
+    ax1.set_xlabel('Classes')
     
     # Add count labels on bars
     for bar, count in zip(bars, counts):
@@ -135,12 +135,12 @@ def create_data_visualization(train_dir, save_path="models/dataset_analysis.png"
     
     # Pie chart
     ax2.pie(counts, labels=classes, colors=colors, autopct='%1.1f%%', startangle=90)
-    ax2.set_title('Sınıf Oranları')
+    ax2.set_title('Class Proportions')
     
     plt.tight_layout()
     plt.savefig(save_path, dpi=300, bbox_inches='tight')
     plt.close()
     
-    print(f"📊 Dataset visualization kaydedildi: {save_path}")
+    print(f"📊 Dataset visualization saved: {save_path}")
     
     return class_counts

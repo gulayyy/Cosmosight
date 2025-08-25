@@ -8,141 +8,141 @@ import json
 import tensorflow as tf
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 
-# TensorFlow log seviyesini kur
+# Set TensorFlow log level
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 tf.get_logger().setLevel('ERROR')
 
 def load_improved_model():
-    """Geliştirilmiş modeli yükle"""
+    """Load improved model"""
     try:
-        # Önce improved model'i dene
+        # First try improved model
         keras_path = "models/astro_model_improved.keras"
         h5_path = "models/astro_model_improved.h5"
         
         model_path = None
         if os.path.exists(keras_path):
             model_path = keras_path
-            print(f"✅ Improved Keras modeli bulundu: {keras_path}")
+            print(f"✅ Improved Keras model found: {keras_path}")
         elif os.path.exists(h5_path):
             model_path = h5_path
-            print(f"✅ Improved H5 modeli bulundu: {h5_path}")
+            print(f"✅ Improved H5 model found: {h5_path}")
         else:
             # Fallback to original model
-            print("⚠️ Improved model bulunamadı, orijinal model denenecek...")
+            print("⚠️ Improved model not found, trying original model...")
             original_keras = "models/astro_model.keras"
             original_h5 = "models/astro_model.h5"
             
             if os.path.exists(original_keras):
                 model_path = original_keras
-                print(f"📦 Original Keras modeli bulundu: {original_keras}")
+                print(f"📦 Original Keras model found: {original_keras}")
             elif os.path.exists(original_h5):
                 model_path = original_h5
-                print(f"📦 Original H5 modeli bulundu: {original_h5}")
+                print(f"📦 Original H5 model found: {original_h5}")
             else:
-                print("❌ Hiçbir model dosyası bulunamadı!")
+                print("❌ No model files found!")
                 return None
         
-        print("🔄 Model yükleniyor (bu biraz sürebilir)...")
+        print("🔄 Loading model (this may take a moment)...")
         
-        # Model yükleme
+        # Model loading
         try:
             model = tf.keras.models.load_model(model_path, compile=False)
-            print("✅ Model başarıyla yüklendi!")
+            print("✅ Model loaded successfully!")
             return model
         except Exception as e:
-            print(f"❌ Model yükleme hatası: {str(e)[:200]}...")
-            print("🔄 Weights extraction metoduyla deneniyor...")
+            print(f"❌ Model loading error: {str(e)[:200]}...")
+            print("🔄 Trying weights extraction method...")
             return None
             
     except Exception as e:
-        print(f"❌ Genel model yükleme hatası: {str(e)[:200]}...")
+        print(f"❌ General model loading error: {str(e)[:200]}...")
         return None
 
 def preprocess_image_for_prediction(image_path):
-    """Resmi tahmin için hazırla"""
+    """Prepare image for prediction"""
     try:
-        # Resmi aç ve RGB'ye çevir
+        # Open image and convert to RGB
         img = Image.open(image_path)
         if img.mode != 'RGB':
             img = img.convert('RGB')
         
-        # Boyutlandır (224x224)
+        # Resize (224x224)
         img = img.resize((224, 224))
         
-        # NumPy array'e çevir
+        # Convert to NumPy array
         img_array = np.array(img, dtype=np.float32)
         
-        # Batch dimension ekle
+        # Add batch dimension
         img_batch = np.expand_dims(img_array, axis=0)
         
-        # MobileNetV2 için preprocessing ([-1, 1] aralığı)
+        # MobileNetV2 preprocessing ([-1, 1] range)
         img_preprocessed = preprocess_input(img_batch)
         
         return img_preprocessed
         
     except Exception as e:
-        print(f"❌ Resim preprocessing hatası: {e}")
+        print(f"❌ Image preprocessing error: {e}")
         return None
 
 def predict_with_confidence_analysis(model, image_path, class_names):
-    """Gelişmiş tahmin analizi"""
+    """Advanced prediction analysis"""
     try:
-        print(f"🔍 Resim analizi: {os.path.basename(image_path)}")
+        print(f"🔍 Image analysis: {os.path.basename(image_path)}")
         
-        # Resmi preprocess et
+        # Preprocess image
         img_processed = preprocess_image_for_prediction(image_path)
         if img_processed is None:
             return None
         
-        print("🧠 Model tahmin yapıyor...")
+        print("🧠 Model making prediction...")
         
-        # Tahmin yap
+        # Make prediction
         predictions = model.predict(img_processed, verbose=0)
-        probabilities = predictions[0]  # İlk (ve tek) batch elementini al
+        probabilities = predictions[0]  # Get first (and only) batch element
         
-        # Sonuçları analiz et
+        # Analyze results
         predicted_idx = np.argmax(probabilities)
         confidence = probabilities[predicted_idx]
         predicted_class = class_names[predicted_idx]
         
-        # Confidence level analizi
+        # Confidence level analysis
         if confidence >= 0.8:
-            confidence_level = "Çok Yüksek 🟢"
+            confidence_level = "Very High 🟢"
         elif confidence >= 0.6:
-            confidence_level = "Yüksek 🟡"
+            confidence_level = "High 🟡"
         elif confidence >= 0.4:
-            confidence_level = "Orta 🟠"
+            confidence_level = "Medium 🟠"
         else:
-            confidence_level = "Düşük 🔴"
+            confidence_level = "Low 🔴"
         
-        # İkinci en yüksek skor
+        # Second highest score
         sorted_indices = np.argsort(probabilities)[::-1]
         second_idx = sorted_indices[1]
         second_confidence = probabilities[second_idx]
         second_class = class_names[second_idx]
         
-        # Margin (fark)
+        # Margin (difference)
         margin = confidence - second_confidence
         
-        # Sonuçları göster
+        # Show results
         print("\n" + "="*70)
-        print("🎯 GELİŞTİRİLMİŞ MODEL TAHMİNİ")
+        print("🎯 IMPROVED MODEL PREDICTION")
         print("="*70)
-        print(f"📸 Resim: {os.path.basename(image_path)}")
-        print(f"🏷️  En Olası Sınıf: {predicted_class}")
-        print(f"📊 Güven Skoru: {confidence:.2%}")
-        print(f"🎚️  Güven Seviyesi: {confidence_level}")
-        print(f"📏 İkinci sınıftan fark: {margin:.2%}")
+        print(f"📸 Image: {os.path.basename(image_path)}")
+        print(f"🏷️  Most Likely Class: {predicted_class}")
+        print(f"📊 Confidence Score: {confidence:.2%}")
+        print(f"🎚️  Confidence Level: {confidence_level}")
+        print(f"📏 Margin from second class: {margin:.2%}")
         print("="*70)
         
-        print(f"\n📈 Detaylı Sınıf Skorları:")
+        print(f"\n📈 Detailed Class Scores:")
         for i, (class_name, prob) in enumerate(zip(class_names, probabilities)):
             if i == predicted_idx:
                 marker = "🎯"
-                status = "(TAHMİN)"
+                status = "(PREDICTION)"
             elif i == second_idx:
                 marker = "🥈"
-                status = "(İKİNCİ)"
+                status = "(SECOND)"
             else:
                 marker = "  "
                 status = ""
@@ -154,23 +154,23 @@ def predict_with_confidence_analysis(model, image_path, class_names):
             
             print(f"{marker} {class_name:8s}: {prob:6.2%} |{bar}| {status}")
         
-        # Güvenilirlik analizi
-        print(f"\n🔍 Güvenilirlik Analizi:")
+        # Reliability analysis
+        print(f"\n🔍 Reliability Analysis:")
         if confidence >= 0.7 and margin >= 0.3:
-            reliability = "Çok güvenilir tahmin ✅"
+            reliability = "Very reliable prediction ✅"
         elif confidence >= 0.5 and margin >= 0.2:
-            reliability = "Güvenilir tahmin ☑️"
+            reliability = "Reliable prediction ☑️"
         elif confidence >= 0.4:
-            reliability = "Orta güvenilirlik ⚠️"
+            reliability = "Medium reliability ⚠️"
         else:
-            reliability = "Düşük güvenilirlik - Manuel kontrol önerilir ❌"
+            reliability = "Low reliability - Manual check recommended ❌"
         
         print(f"🔮 {reliability}")
         
-        # Alternatif tahminler
+        # Alternative predictions
         if margin < 0.2:
-            print(f"💡 Not: {second_class} sınıfı da {second_confidence:.1%} ile yakın skorlu")
-            print(f"   Manuel kontrol yapmanız önerilir.")
+            print(f"💡 Note: {second_class} class also has close score of {second_confidence:.1%}")
+            print(f"   Manual verification is recommended.")
         
         return {
             'predicted_class': predicted_class,
@@ -181,14 +181,14 @@ def predict_with_confidence_analysis(model, image_path, class_names):
         }
         
     except Exception as e:
-        print(f"❌ Tahmin hatası: {e}")
+        print(f"❌ Prediction error: {e}")
         return None
 
 def batch_predict(model, image_paths, class_names):
-    """Birden fazla resim için tahmin"""
+    """Prediction for multiple images"""
     results = []
     
-    print(f"\n🔄 {len(image_paths)} resim işleniyor...")
+    print(f"\n🔄 Processing {len(image_paths)} images...")
     
     for i, image_path in enumerate(image_paths):
         print(f"\n[{i+1}/{len(image_paths)}]", end=" ")
@@ -204,63 +204,63 @@ def batch_predict(model, image_paths, class_names):
 
 def main():
     if len(sys.argv) < 2:
-        print("❌ Kullanım:")
-        print("   Tek resim: python improved_predict.py <resim_yolu>")
-        print("   Çoklu resim: python improved_predict.py <resim1> <resim2> ...")
-        print("   Örnek: python improved_predict.py data/split_dataset/test/Galaxy/test-galaksi.jpg")
+        print("❌ Usage:")
+        print("   Single image: python improved_predict.py <image_path>")
+        print("   Multiple images: python improved_predict.py <image1> <image2> ...")
+        print("   Example: python improved_predict.py data/split_dataset/test/Galaxy/test-galaxy.jpg")
         sys.exit(1)
     
     image_paths = sys.argv[1:]
     
-    # Dosya varlığını kontrol et
+    # Check file existence
     valid_paths = []
     for image_path in image_paths:
         if os.path.exists(image_path):
             valid_paths.append(image_path)
         else:
-            print(f"⚠️ Dosya bulunamadı: {image_path}")
+            print(f"⚠️ File not found: {image_path}")
     
     if not valid_paths:
-        print("❌ Geçerli resim dosyası bulunamadı!")
+        print("❌ No valid image files found!")
         sys.exit(1)
     
-    # Class names'i yükle
+    # Load class names
     try:
         with open('models/class_names.json', 'r') as f:
             class_names = json.load(f)
-        print(f"✅ Sınıflar yüklendi: {class_names}")
+        print(f"✅ Classes loaded: {class_names}")
     except Exception as e:
-        print(f"❌ Class names yüklenemedi: {e}")
+        print(f"❌ Could not load class names: {e}")
         sys.exit(1)
     
-    # Modeli yükle
-    print("🔄 Model yükleniyor...")
+    # Load model
+    print("🔄 Loading model...")
     model = load_improved_model()
     if model is None:
-        print("❌ Model yüklenemedi!")
+        print("❌ Could not load model!")
         sys.exit(1)
     
-    print(f"✅ Model başarıyla yüklendi!")
+    print(f"✅ Model loaded successfully!")
     print(f"📐 Model input shape: {model.input_shape}")
     print(f"📐 Model output shape: {model.output_shape}")
     
-    # Tahmin(ler) yap
+    # Make prediction(s)
     if len(valid_paths) == 1:
-        # Tek resim
+        # Single image
         predict_with_confidence_analysis(model, valid_paths[0], class_names)
     else:
-        # Çoklu resim
+        # Multiple images
         results = batch_predict(model, valid_paths, class_names)
         
-        # Özet
+        # Summary
         print("\n" + "="*70)
-        print("📊 TOPLU TAHMİN ÖZETİ")
+        print("📊 BATCH PREDICTION SUMMARY")
         print("="*70)
         
         for result in results:
-            reliability_emoji = "✅" if "Çok güvenilir" in result['reliability'] else \
-                              "☑️" if "Güvenilir" in result['reliability'] else \
-                              "⚠️" if "Orta" in result['reliability'] else "❌"
+            reliability_emoji = "✅" if "Very reliable" in result['reliability'] else \
+                              "☑️" if "Reliable" in result['reliability'] else \
+                              "⚠️" if "Moderate" in result['reliability'] else "❌"
             
             print(f"{reliability_emoji} {result['image']:30s} -> {result['predicted_class']:8s} ({result['confidence']:5.1%})")
 

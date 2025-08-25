@@ -1,33 +1,34 @@
-# 🌌 AstroVision: Deep Learning for Astronomical Image Classification
+# 🌌 Astronomical Image Classification Project
 
 <div align="center">
-
-# 🌌 AstroVision: Deep Learning for Astronomical Image Classification
-
-![AstroVision Banner](https://user-images.githubusercontent.com/placeholder/astrovision-banner.gif)
 
 [![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.8+-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](https://tensorflow.org/)
 [![OpenCV](https://img.shields.io/badge/OpenCV-4.5+-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)](https://opencv.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 [![Accuracy](https://img.shields.io/badge/🎯_Test_Accuracy-99.47%25-brightgreen?style=for-the-badge)](models/)
-[![Stars](https://img.shields.io/github/stars/yourusername/astrovision?style=for-the-badge&color=gold)](https://github.com/yourusername/astrovision/stargazers)
-[![Forks](https://img.shields.io/github/forks/yourusername/astrovision?style=for-the-badge&color=blue)](https://github.com/yourusername/astrovision/network)
 
 <br>
 
-> 🚀 **State-of-the-art CNN model classifying astronomical images with 99.47% accuracy**
+> 🚀 **De## 📚 **Documentation**
+
+### **📖 Available Guides**
+- 🐧 [**Ubuntu Setup**](ubuntu_setup.sh)
+
+### **📊 Project Files**
+- [**Model Architecture**](scripts/train_improved_model.py)
+- [**Performance Analysis**](notebooks/evaluate_model.py)
+- [**Visualization Tools**](notebooks/advanced_visualization.py)model classifying astronomical images with 99.47% accuracy**
 > 
 > *Galaxy • Nebula • Star classification powered by MobileNetV2 & Transfer Learning*
 
-[🎯 Quick Start](#-quick-start) • [📊 Demo](#-live-demo) • [🔬 Features](#-features) • [📚 Docs](#-documentation) • [🤝 Contributing](#-contributing)
+[🎯 Quick Start](#-quick-start) • [📊 Demo](#-demo-results) • [🔬 Features](#-features) • [📚 Documentation](#-documentation) • [🤝 Contributing](#-contributing)
 
 </div>
 
 ---
 
-## 🌟 **What Makes AstroVision Special?**
+## 🌟 **What Makes This Project Special?**
 
 <div align="center">
 <table>
@@ -35,7 +36,7 @@
 <td align="center" width="33%">
 <img src="https://img.shields.io/badge/🎯-99.47%25_Accuracy-brightgreen?style=for-the-badge" width="200"/>
 <h3>🏆 Exceptional Performance</h3>
-<p><em>Outperforms traditional methods with cutting-edge deep learning</em></p>
+<p><em>High accuracy deep learning classification</em></p>
 </td>
 <td align="center" width="33%">
 <img src="https://img.shields.io/badge/⚡-Real_Time-orange?style=for-the-badge" width="200"/>
@@ -43,9 +44,9 @@
 <p><em>< 0.1s inference time with MobileNetV2 optimization</em></p>
 </td>
 <td align="center" width="33%">
-<img src="https://img.shields.io/badge/🔬-Scientific_Validated-blue?style=for-the-badge" width="200"/>
-<h3>🧪 Research Grade</h3>
-<p><em>Feature extraction validates predictions with astronomical science</em></p>
+<img src="https://img.shields.io/badge/🔬-Scientific_Analysis-blue?style=for-the-badge" width="200"/>
+<h3>🧪 Feature Analysis</h3>
+<p><em>Includes astronomical feature extraction and validation</em></p>
 </td>
 </tr>
 </table>
@@ -65,32 +66,25 @@
 - ✅ **Two-Stage Training Pipeline**
 - ✅ **Class-Balanced Loss Function**
 - ✅ **Advanced Data Augmentation**
-- ✅ **Automatic Hyperparameter Tuning**
-- ✅ **Model Quantization Support**
 
 </td>
 <td width="50%">
 
 ### 🔬 **Computer Vision Features**
 - ✅ **Feature Extraction & Analysis**
-- ✅ **Astronomical Object Detection**
 - ✅ **Star Density Calculation**
 - ✅ **Texture & Shape Analysis**
 - ✅ **Scientific Validation Pipeline**
-- ✅ **FITS Format Support**
 
 </td>
 </tr>
 <tr>
 <td width="50%">
 
-### � **Production Features**
+### ⚙️ **Production Features**
 - ✅ **Cross-Platform Compatibility**
-- ✅ **Docker Containerization**
-- ✅ **REST API Interface**
 - ✅ **Batch Processing**
 - ✅ **Real-time Inference**
-- ✅ **Model Versioning**
 
 </td>
 <td width="50%">
@@ -115,58 +109,49 @@
 ### **⚡ One-Command Installation**
 
 ```bash
-# Clone & Setup in 30 seconds
-git clone https://github.com/yourusername/astrovision.git
-cd astrovision && pip install -r requirements.txt
+# Clone & Setup
+git clone https://github.com/YOUR_USERNAME/astro_classification_project.git
+cd astro_classification_project && pip install -r requirements.txt
 ```
 
 ### **🔮 Instant Prediction**
 
 ```python
-# Classify any astronomical image in 3 lines
+# Classify astronomical images
 from scripts.improved_predict import predict_image
 
 result = predict_image("your_space_image.jpg")
 print(f"🌌 {result['class']} ({result['confidence']:.1f}% confidence)")
 ```
 
-<div align="center">
-
-**🎬 See it in action:**
-
-[![Demo Video](https://img.shields.io/badge/▶️_Watch_Demo-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/watch?v=demo)
-
-</div>
-
 ---
 
-## 📊 **Live Demo**
+## 📊 **Demo Results**
 
 <div align="center">
-<table>
-<tr>
-<td align="center">
-<img src="https://via.placeholder.com/300x200/1a1a2e/eee?text=🌌+Galaxy" width="300"/>
-<br><b>🌌 Galaxy Detection</b><br>
-<code>Confidence: 98.5%</code>
-</td>
-<td align="center">
-<img src="https://via.placeholder.com/300x200/16213e/eee?text=☁️+Nebula" width="300"/>
-<br><b>☁️ Nebula Detection</b><br>
-<code>Confidence: 96.4%</code>
-</td>
-<td align="center">
-<img src="https://via.placeholder.com/300x200/0f3460/eee?text=⭐+Star" width="300"/>
-<br><b>⭐ Star Detection</b><br>
-<code>Confidence: 89.5%</code>
-</td>
-</tr>
-</table>
+
+### **🔬 Test With Your Own Images**
 
 ```bash
-# Try these commands right now!
+# Test with batch images
 python scripts/test_improved_model.py
+
+# Single image prediction
 python scripts/improved_predict.py data/samples/galaxy.jpg
+
+# Model evaluation
+python notebooks/evaluate_model.py
+```
+
+### **📈 Sample Output**
+
+```
+🌌 Astronomical Image Analysis
+=====================================
+📸 Image: galaxy_sample.jpg
+🔮 Prediction: Galaxy
+📊 Confidence: 98.52%
+⚡ Processing time: 0.08s
 ```
 
 </div>
@@ -274,8 +259,8 @@ graph TB
 
 ```powershell
 # Clone repository
-git clone https://github.com/yourusername/astrovision.git
-cd astrovision
+git clone https://github.com/gulayyy/Cosmosight.git
+cd astro_classification_project
 
 # Create virtual environment
 python -m venv .venv
@@ -295,29 +280,16 @@ python scripts/test_improved_model.py
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/astrovision.git
-cd astrovision
+git clone https://github.com/YOUR_USERNAME/astro_classification_project.git
+cd astro_classification_project
 
 # Automated setup
-chmod +x ubuntu_run_setup.sh
-./ubuntu_run_setup.sh
+chmod +x ubuntu_setup.sh
+./ubuntu_setup.sh
 
 # Interactive testing
 chmod +x ubuntu_test_runner.sh
 ./ubuntu_test_runner.sh
-```
-
-</details>
-
-<details>
-<summary><b>🐳 Docker Setup</b></summary>
-
-```bash
-# Build container
-docker build -t astrovision .
-
-# Run predictions
-docker run -v $(pwd)/data:/app/data astrovision python scripts/improved_predict.py /app/data/test_image.jpg
 ```
 
 </details>
@@ -601,19 +573,16 @@ python notebooks/evaluate_model.py
 python notebooks/training_visualization.py
 ```
 
-### **🎯 Production Deployment**
-```python
-# REST API server
-from flask import Flask
-from scripts.improved_predict import AstronomicalClassifier
+### **🎯 Running Scripts**
+```bash
+# Advanced visualization
+python notebooks/advanced_visualization.py
 
-app = Flask(__name__)
-classifier = AstronomicalClassifier()
+# Model evaluation
+python notebooks/evaluate_model.py
 
-@app.route('/predict', methods=['POST'])
-def predict():
-    # Handle image upload and prediction
-    pass
+# Performance tracking
+python notebooks/training_visualization.py
 ```
 
 ---
@@ -627,19 +596,19 @@ We welcome contributions! 🎉
 
 ```bash
 # Fork the repository
-git clone https://github.com/yourusername/astrovision.git
-cd astrovision
+git clone https://github.com/YOUR_USERNAME/astro_classification_project.git
+cd astro_classification_project
 
 # Create development environment
 python -m venv dev-env
 source dev-env/bin/activate  # Linux/Mac
 # dev-env\Scripts\activate   # Windows
 
-# Install development dependencies
-pip install -r requirements-dev.txt
+# Install dependencies
+pip install -r requirements.txt
 
-# Run tests
-python -m pytest tests/
+# Test setup
+python scripts/improved_predict.py --help
 
 # Format code
 black scripts/ notebooks/
@@ -648,44 +617,39 @@ black scripts/ notebooks/
 </details>
 
 ### **🎯 Areas for Contribution**
-- 🌌 **New astronomical object classes** (quasars, pulsars)
 - 🔬 **Advanced feature extraction** algorithms
-- 📱 **Mobile app development**
-- 🌐 **Web interface** enhancement
 - 📊 **Performance optimization**
-- 🧪 **Extended testing** suites
 
 ---
 
 ## 📚 **Documentation**
 
-### **📖 Complete Guides**
-- 📋 [**Installation Guide**](docs/installation.md)
-- 🚀 [**Quick Start Tutorial**](docs/quickstart.md)
-- 🔧 [**API Reference**](docs/api.md)
-- 🎯 [**Model Training Guide**](docs/training.md)
-- 🐧 [**Ubuntu Setup**](UBUNTU_GUIDE.md)
-- 🎭 [**Presentation Guide**](SUNUM_REHBERI.md)
+### **📖 Available Guides**
+- 📋 [**Installation Guide**](GITHUB_UPLOAD_GUIDE.md)
+- � [**Ubuntu Setup**](ubuntu_setup.sh)
+- 🪟 [**Windows Setup**](setup_env.sh)
+- 🐳 [**Docker Guide**](Dockerfile)
 
-### **📊 Research Papers**
-- [**"Deep Learning for Astronomical Image Classification"**](docs/paper.pdf)
-- [**Model Architecture Analysis**](docs/architecture.md)
-- [**Performance Benchmarks**](docs/benchmarks.md)
+### **📊 Project Files**
+- [**Model Architecture**](scripts/train_improved_model.py)
+- [**Performance Analysis**](notebooks/evaluate_model.py)
+- [**Visualization Tools**](notebooks/advanced_visualization.py)
 
 ---
 
-## 🏆 **Achievements & Recognition**
+## 🏆 **Project Performance**
 
 <div align="center">
 
-![Achievement Badges](https://img.shields.io/badge/🏆-Top_1%25_Accuracy-gold?style=for-the-badge)
-![Community](https://img.shields.io/badge/⭐-1000+_Stars-brightgreen?style=for-the-badge)
-![Downloads](https://img.shields.io/badge/📥-10K+_Downloads-blue?style=for-the-badge)
+![Achievement](https://img.shields.io/badge/�-99.47%25_Test_Accuracy-brightgreen?style=for-the-badge)
+![Model](https://img.shields.io/badge/🧠-MobileNetV2_Transfer_Learning-blue?style=for-the-badge)
 
 </div>
 
-### **🎉 Project Milestones**
+### **📊 Key Metrics**
 - ✅ **99.47% Test Accuracy** achieved
+- ✅ **99.79% Validation Accuracy** reached
+- ✅ **< 0.1s Inference Time** optimized
 - ✅ **Production-ready** model deployment
 - ✅ **Cross-platform** compatibility
 - ✅ **Scientific validation** with feature analysis
@@ -725,17 +689,9 @@ black scripts/ notebooks/
 
 <div align="center">
 
-[![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github)](https://github.com/yourusername)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/yourprofile)
-[![Email](https://img.shields.io/badge/Email-Contact-EA4335?style=for-the-badge&logo=gmail)](mailto:your.email@example.com)
-
-### **📊 Project Statistics**
-
-![GitHub stars](https://img.shields.io/github/stars/yourusername/astrovision?style=social)
-![GitHub forks](https://img.shields.io/github/forks/yourusername/astrovision?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/yourusername/astrovision?style=social)
-
-</div>
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github)](https://github.com/gulayyy)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/g%C3%BClay-y%C3%BCceer-189236253/)
+[![Email](https://img.shields.io/badge/Email-Contact-EA4335?style=for-the-badge&logo=gmail)](mailto:gulayyuceer2004@gmail.com)
 
 ---
 

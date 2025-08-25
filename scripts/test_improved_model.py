@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Improved model test script
 Tests and compares with the original model

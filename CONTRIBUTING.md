@@ -1,73 +1,91 @@
-# Contributing to AstroVision 🚀
+# Contributing to Astronomical Classification Project 🚀
 
-We love your input! We want to make contributing to AstroVision as easy and transparent as possible.
+We welcome contributions to improve our Galaxy/Nebula/Star classification system!
 
-## 🎯 **Areas for Contribution**
+## 🎯 **Current Project Scope**
 
-### 🌌 **Model Improvements**
-- [ ] New astronomical object classes (quasars, pulsars, supernovas)
-- [ ] Advanced architectures (Vision Transformers, EfficientNet)
-- [ ] Model compression and optimization
-- [ ] Multi-modal learning (spectral + visual data)
+This project uses **MobileNetV2** to classify astronomical images with **99.47% test accuracy**.
 
-### 🔬 **Feature Engineering**
-- [ ] Advanced astronomical feature extraction
-- [ ] FITS format processing improvements
-- [ ] Spectral analysis integration
-- [ ] Time-series analysis for variable stars
+### � **Areas for Contribution**
 
-### 🚀 **Infrastructure**
-- [ ] REST API development
-- [ ] Mobile app (React Native/Flutter)
-- [ ] Web interface enhancement
-- [ ] Cloud deployment automation
+### **Model & Performance**
+- [ ] Model architecture improvements (keeping MobileNetV2 base)
+- [ ] Training optimization and hyperparameter tuning
+- [ ] Data augmentation strategies
+- [ ] Model evaluation and testing improvements
 
-### 📊 **Data & Research**
-- [ ] Dataset expansion (NASA, ESA archives)
-- [ ] Synthetic data generation
-- [ ] Research paper reproduction
-- [ ] Benchmark comparisons
+### **Code Quality**
+- [ ] Code documentation and comments
+- [ ] Error handling improvements
+- [ ] Code refactoring and optimization
+- [ ] Cross-platform compatibility testing
+
+### **Data & Analysis**
+- [ ] Dataset expansion (more Galaxy/Nebula/Star images)
+- [ ] Image preprocessing improvements
+- [ ] Analysis visualization enhancements
+- [ ] Performance metrics and reporting
+
+### **Usability**
+- [ ] User interface improvements
+- [ ] Command-line argument handling
+- [ ] Better prediction output formatting
+- [ ] Installation and setup documentation
 
 ## 🛠️ **Development Setup**
 
-### **1. Fork & Clone**
+### **1. Clone Repository**
 ```bash
-git clone https://github.com/yourusername/astrovision.git
-cd astrovision
+git clone <your-repository-url>
+cd astro_classification_project
 ```
 
 ### **2. Environment Setup**
 ```bash
-# Create development environment
-python -m venv dev-env
-source dev-env/bin/activate  # Linux/Mac
-# dev-env\Scripts\activate   # Windows
-
-# Install dependencies
+# Windows (PowerShell)
+python -m venv venv
+venv\Scripts\activate
 pip install -r requirements.txt
-pip install -r requirements-dev.txt
+
+# Ubuntu/Linux 
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 ```
 
-### **3. Pre-commit Hooks**
+### **3. Verify Installation**
 ```bash
-pre-commit install
+# Test model loading
+python scripts/improved_predict.py data/processed_images/Galaxy/100.jpg
+
+# Check training setup
+python scripts/train_model.py --help
 ```
 
 ## 📋 **Development Guidelines**
 
 ### **Code Style**
-- Use `black` for code formatting
-- Follow PEP 8 guidelines
-- Add type hints where possible
-- Write descriptive variable names
+- Use clear, descriptive variable names
+- Add comments for complex logic
+- Follow Python PEP 8 guidelines
+- Write helpful docstrings
 
-### **Testing**
+### **File Organization**
+- Keep scripts in `scripts/` directory
+- Save models in `models/` directory
+- Store datasets in `data/` directory
+- Document changes in code comments
+
+### **Testing Your Changes**
 ```bash
-# Run tests
-python -m pytest tests/
+# Test prediction functionality
+python scripts/improved_predict.py data/processed_images/Galaxy/100.jpg
 
-# Run with coverage
-pytest --cov=scripts tests/
+# Test training pipeline
+python scripts/train_model.py
+
+# Check utility functions
+python scripts/utils.py
 ```
 
 ### **Documentation**
@@ -79,36 +97,35 @@ pytest --cov=scripts tests/
 
 1. **Create Feature Branch**
    ```bash
-   git checkout -b feature/amazing-new-feature
+   git checkout -b feature/your-feature-name
    ```
 
 2. **Make Changes**
    - Write clean, documented code
-   - Add tests for new functionality
-   - Update documentation
+   - Test your changes thoroughly
+   - Update documentation if needed
 
 3. **Test Everything**
    ```bash
-   # Format code
-   black scripts/ notebooks/
+   # Test prediction functionality
+   python scripts/improved_predict.py data/processed_images/Galaxy/100.jpg
    
-   # Run tests
-   pytest tests/
+   # Test model training
+   python scripts/train_model.py
    
-   # Check model performance
-   python scripts/test_improved_model.py
+   # Check utilities
+   python scripts/utils.py
    ```
 
-4. **Commit with Conventional Commits**
+4. **Commit Changes**
    ```bash
-   git commit -m "feat: add quasar classification support"
-   git commit -m "fix: resolve FITS file loading issue"
-   git commit -m "docs: update API documentation"
+   git add .
+   git commit -m "Add: descriptive commit message"
    ```
 
 5. **Push and Create PR**
    ```bash
-   git push origin feature/amazing-new-feature
+   git push origin feature/your-feature-name
    ```
 
 ## 🏷️ **Issue Labels**
@@ -130,10 +147,10 @@ Contributors will be:
 
 ## 📞 **Questions?**
 
-- 💬 Open a [Discussion](https://github.com/yourusername/astrovision/discussions)
-- 🐛 Report a [Bug](https://github.com/yourusername/astrovision/issues)
-- 💡 Request a [Feature](https://github.com/yourusername/astrovision/issues)
+- 💬 Open a Discussion on GitHub
+- 🐛 Report a Bug via Issues
+- 💡 Request a Feature via Issues
 
 ---
 
-**Thank you for contributing to AstroVision! 🌌**
+**Thank you for contributing to Astronomical Classification Project! 🌌**

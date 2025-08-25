@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Astronomical Image Processing and Feature Extraction Module
 Advanced algorithms for NASA/ESA quality image analysis
