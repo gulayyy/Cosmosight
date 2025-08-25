@@ -10,11 +10,7 @@
 
 <br>
 
-
-### **📊 Project Files**
-- [**Model Architecture**](scripts/train_improved_model.py)
-- [**Performance Analysis**](notebooks/evaluate_model.py)
-- [**Visualization Tools**](notebooks/advanced_visualization.py)model classifying astronomical images with 99.47% accuracy**
+> � **Deep learning model classifying astronomical images with 99.47% accuracy**
 > 
 > *Galaxy • Nebula • Star classification powered by MobileNetV2 & Transfer Learning*
 
@@ -154,38 +150,81 @@ python notebooks/evaluate_model.py
 
 ---
 
-## �️ **Architecture Deep Dive**
+## 🏗️ **Architecture Deep Dive**
 
 <div align="center">
 
 ### **🎯 Model Pipeline**
 
-```mermaid
-graph TB
-    A[📸 Input Image<br/>224×224×3] --> B[🧠 MobileNetV2<br/>Pre-trained Base]
-    B --> C[🌊 GlobalAveragePooling2D<br/>7×7×1280 → 1280]
-    C --> D[🔢 Dense Layer 1<br/>256 + BatchNorm + Dropout]
-    D --> E[🔢 Dense Layer 2<br/>128 + BatchNorm + Dropout]
-    E --> F[🎯 Output Layer<br/>3 Classes + Softmax]
-    F --> G[📊 Classification<br/>Galaxy/Nebula/Star]
-    
-    subgraph "Feature Extraction"
-        H[🔬 Star Density Analysis]
-        I[📐 Shape Feature Extraction]
-        J[🎨 Texture Analysis]
-    end
-    
-    G --> H
-    G --> I
-    G --> J
-    
-    style A fill:#e1f5fe
-    style B fill:#f3e5f5
-    style G fill:#e8f5e8
-    style H fill:#fff3e0
-    style I fill:#fff3e0
-    style J fill:#fff3e0
-```
+<table>
+<tr>
+<td align="center" style="border: 2px solid #e1f5fe; padding: 10px;">
+<strong>📸 Input Image</strong><br/>
+224×224×3
+</td>
+</tr>
+<tr><td align="center">⬇️</td></tr>
+<tr>
+<td align="center" style="border: 2px solid #f3e5f5; padding: 10px;">
+<strong>🧠 MobileNetV2</strong><br/>
+Pre-trained Base
+</td>
+</tr>
+<tr><td align="center">⬇️</td></tr>
+<tr>
+<td align="center" style="border: 2px solid #e3f2fd; padding: 10px;">
+<strong>🌊 GlobalAveragePooling2D</strong><br/>
+7×7×1280 → 1280
+</td>
+</tr>
+<tr><td align="center">⬇️</td></tr>
+<tr>
+<td align="center" style="border: 2px solid #f1f8e9; padding: 10px;">
+<strong>🔢 Dense Layer 1</strong><br/>
+256 + BatchNorm + Dropout
+</td>
+</tr>
+<tr><td align="center">⬇️</td></tr>
+<tr>
+<td align="center" style="border: 2px solid #f1f8e9; padding: 10px;">
+<strong>🔢 Dense Layer 2</strong><br/>
+128 + BatchNorm + Dropout
+</td>
+</tr>
+<tr><td align="center">⬇️</td></tr>
+<tr>
+<td align="center" style="border: 2px solid #e8f5e8; padding: 10px;">
+<strong>🎯 Output Layer</strong><br/>
+3 Classes + Softmax
+</td>
+</tr>
+<tr><td align="center">⬇️</td></tr>
+<tr>
+<td align="center" style="border: 2px solid #fff3e0; padding: 10px;">
+<strong>📊 Classification</strong><br/>
+Galaxy/Nebula/Star
+</td>
+</tr>
+</table>
+
+### **🔬 Feature Extraction Pipeline**
+
+<table>
+<tr>
+<td align="center" width="33%" style="border: 2px solid #fff3e0; padding: 15px;">
+<strong>🔬 Star Density Analysis</strong><br/>
+<em>Pixel ratio calculation</em>
+</td>
+<td align="center" width="33%" style="border: 2px solid #fff3e0; padding: 15px;">
+<strong>📐 Shape Feature Extraction</strong><br/>
+<em>Geometric analysis</em>
+</td>
+<td align="center" width="33%" style="border: 2px solid #fff3e0; padding: 15px;">
+<strong>🎨 Texture Analysis</strong><br/>
+<em>Surface complexity</em>
+</td>
+</tr>
+</table>
 
 ### **⚖️ Training Strategy**
 
