@@ -600,7 +600,7 @@ We welcome contributions! 🎉
 
 ```bash
 # Fork the repository
-git clone https://github.com/YOUR_USERNAME/astro_classification_project.git
+git clone https://github.com/gulayyy/Cosmosight.git
 cd astro_classification_project
 
 # Create development environment
