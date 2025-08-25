@@ -10,10 +10,6 @@
 
 <br>
 
-> 🚀 **De## 📚 **Documentation**
-
-### **📖 Available Guides**
-- 🐧 [**Ubuntu Setup**](ubuntu_setup.sh)
 
 ### **📊 Project Files**
 - [**Model Architecture**](scripts/train_improved_model.py)
@@ -529,7 +525,7 @@ features = {
 | Device | Inference Time | Throughput |
 |--------|----------------|------------|
 | 💻 **CPU (Intel i7)** | 0.08s | 12.5 FPS |
-| 🎮 **GPU (RTX 3070)** | 0.02s | 50 FPS |
+| 🎮 **GPU (RTX 3050 Ti)** | 0.02s | 50 FPS |
 | 📱 **Mobile (ARM)** | 0.15s | 6.7 FPS |
 
 ### **🧠 Memory Usage**
