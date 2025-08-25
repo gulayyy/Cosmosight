@@ -519,27 +519,35 @@ features = {
 
 ---
 
-## 🎯 **Performance Benchmarks**
+## 🎯 **Performance Results**
 
-### **⚡ Speed Benchmarks**
-| Device | Inference Time | Throughput |
-|--------|----------------|------------|
-| 💻 **CPU (Intel i7)** | 0.08s | 12.5 FPS |
-| 🎮 **GPU (RTX 3050 Ti)** | 0.02s | 50 FPS |
-| 📱 **Mobile (ARM)** | 0.15s | 6.7 FPS |
+### **📊 Model Accuracy**
+| Metric | Value |
+|--------|-------|
+| **Test Accuracy** | **99.47%** |
+| **Overall Precision** | **99.48%** |
+| **Overall Recall** | **99.47%** |
+| **F1-Score** | **99.47%** |
 
-### **🧠 Memory Usage**
-- **Model Size**: 14.2 MB
-- **RAM Usage**: ~512 MB
-- **VRAM Usage**: ~2 GB (training)
+### **🎯 Per-Class Performance**
+| Class | Precision | Recall | F1-Score | Support |
+|-------|-----------|--------|----------|---------|
+| **Galaxy** | 100.00% | 99.92% | 99.96% | 1,201 |
+| **Nebula** | 98.13% | 99.71% | 98.92% | 686 |
+| **Star** | 99.78% | 98.72% | 99.25% | 936 |
 
-### **🎯 Accuracy Comparison**
-| Model | Galaxy | Nebula | Star | Overall |
-|-------|--------|--------|------|---------|
-| **AstroVision** | **100%** | **98.1%** | **99.8%** | **99.5%** |
-| ResNet50 | 98.2% | 94.3% | 97.1% | 96.8% |
-| VGG16 | 95.1% | 89.7% | 93.4% | 92.9% |
-| Custom CNN | 92.3% | 85.2% | 90.1% | 89.7% |
+### **🏗️ Model Architecture**
+- **Base Model**: MobileNetV2 (pre-trained)
+- **Transfer Learning**: ImageNet weights
+- **Fine-tuning**: Custom classification head
+- **Input Size**: 224x224x3
+- **Classes**: Galaxy, Nebula, Star
+
+### **💾 Model Specifications**
+- **Model Format**: Keras (.keras) and HDF5 (.h5)
+- **Framework**: TensorFlow/Keras
+- **Python Version**: 3.8+
+- **Dependencies**: See [requirements.txt](requirements.txt)
 
 ---
 
